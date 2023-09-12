@@ -14,21 +14,11 @@ VIMCasts
 http://vimcasts.org/
 
 
-## How to display lines matching a filter  
-- http://vi.stackexchange.com/questions/2280/show-only-matching-lines
-:vimgrep/pattern/%  
-:cwin  
-
 
 ## How to run a macro on all selected lines
 :'<,'>normal @q
 
 
-## How To Encrypt A VIM File
-- http://usevim.com/2013/11/01/vim-encryption/
-- When you've got an open buffer, before saving type :X in Normal mode. Vim will prompt you for an encryption key twice. Then you can save the file with :w.
-
- 
 ## How to Install VIM Plugins
 - http://howchoo.com/g/ztmyntqzntm/how-to-install-vim-plugins-without-a-plugin-manager
 
@@ -38,10 +28,16 @@ http://vimcasts.org/
  
 
 ## Fix cursor position while scrolling
-:set scrolloff=1000
+:set scrolloff=5
  
 to restore normal scrolling:
 :set scrolloff=0
+
+- scrolloffset (scrolloff for short) adds the configured number of lines as padding above or below the cursor when moving
+  the cursor up or down the file.  
+- simplest way to understand this is to open a file that is large enough to require scrolling, set a value, then press
+  j or k to move the cursor up or down.  When you get near the top or bottom of the page you'll see that the page will
+  scroll to keep the configured number of lines visible when scrolling
  
 
 ## Identify which file/app set a particular setting
@@ -95,8 +91,64 @@ zM          close all folds
 zr            increase `foldlevel` by one
 zR           open all folds
 
+## Enable/Disable Line Numbers
+to enable line numbers
+  :set number
+
+to disable line numbers
+  :set nonumber
 
 
+## Capitalize Letter Under The Cursor
+Can capitalize the letter under the cursor by typing ~
+
+
+
+## Movement
+NOTE most movement commands can be preceded by a number to repeat the command that many times.
+  e.g. 
+    w moves to the beginning of the next word, 3w moves forward 3 words.
+    j moves one line down, 3j moves 3 lines down.
+
+
+h - move one character left
+j - move one line down
+k - move one line up
+l - move one character right
+
+e - move to end of a word
+    - 3e - move to the end of the third word
+E - same as e but treats non-whitespace chars as part of the word
+w - move to the beginning of a word
+    - 3w - move forward three words
+W - same as w but treats non-whitespace chars as part of the word
+b - move backward to the beginning of a word
+B - same as b but treats non-whitespace chars as part of the word
+
+$ - move to the end of the line
+^ - move to the first non-blank character of the line
+0 - move to the beginning of the line
+) - jump forward one sentence
+( - jump backward one sentence
+} - jump forward one paragraph
+{ - jump backward one paragraph
+
+H - jump to top of visible page
+M - jump to the middle of the visible page
+L - jump to the bottom of the visible page
+
+gg - jump to top of file
+G - jump to bottom of file
+nG - jumps to line n
+    example: 10G - jumps to line 10
+
+BABIF - explore all movement commands: see https://vim.fandom.com/wiki/Moving_around
+
+
+
+## WHEN I REACH THE BOTTOM FIND A NEW TIP TO ADD TO THIS LIST 
+- add a movement section that groups all of the movement commands together
  
 
- 
+ fiddle.dee.foo doodle.dee&dooB
+
